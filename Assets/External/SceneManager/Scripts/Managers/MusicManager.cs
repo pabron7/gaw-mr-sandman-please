@@ -14,6 +14,7 @@ public class MusicManager : MonoBehaviour
                 GameObject newManager = new GameObject("MusicManager");
                 _instance = newManager.AddComponent<MusicManager>();
                 DontDestroyOnLoad(newManager);
+                Debug.Log("had to create ınstance of MusıcManager");
             }
             return _instance;
         }
@@ -79,6 +80,7 @@ public class MusicManager : MonoBehaviour
             audioSource.Play();
             isPlaying = true;
             currentTrackIndex = (currentTrackIndex + 1) % currentPlaylist.Count;
+            StopAllCoroutines();
             StartCoroutine(WaitForTrackToEnd());
         }
     }
